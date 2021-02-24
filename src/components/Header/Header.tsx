@@ -6,7 +6,7 @@ import * as React from "react"
 import coin from "../../assets/icons/coin.svg"
 import logo from "../../assets/logo.svg"
 import ButtonDropdown from "../../ui/ButtonDropdown/ButtonDropdown"
-import {Product} from "../../App/App"
+import {Product} from "../Product"
 
 import styles from "./Header.module.scss"
 

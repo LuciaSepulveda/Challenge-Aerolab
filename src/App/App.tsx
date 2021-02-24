@@ -7,6 +7,7 @@ import Products from "../components/Products/Products"
 import History from "../pages/History/History"
 import Loading from "../pages/Loading/Loading"
 import Button from "../ui/Button/Button"
+import {Product} from "../components/Product"
 
 import styles from "./App.module.scss"
 
@@ -31,17 +32,6 @@ interface User {
   name: string
   points: number
   redeemHistory: string[]
-}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Product {
-  _id: string
-  category: string
-  cost: number
-  img: {
-    url: string
-  }
-  name: string
 }
 
 const App: React.FC = () => {

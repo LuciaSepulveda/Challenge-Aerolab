@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import {Product} from "../../App/App"
+import {Product} from "../Product"
 import ProductContainer from "../ProductContainer/ProductContainer"
 
 import styles from "./Products.module.scss"
