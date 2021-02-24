@@ -1,0 +1,43 @@
+.container {
+    width: 80%;
+    margin:auto;
+    margin-bottom: 2%;
+    display:flex;
+    justify-content: space-around;
+
+    .lowestPrice{
+        margin-right: 2%;
+        background-color: #ededed;
+        color: rgba(0,0,0,0.75);
+
+        &:hover{
+            background-color:rgba(0,0,0,0.75);
+            color:#ededed;
+        }
+    }
+
+    .highestPrice{
+        text-align:right;
+        align-self: right;
+        background-color: #ededed;
+        color: rgba(0,0,0,0.75);
+         &:hover{
+            background-color:rgba(0,0,0,0.75);
+            color:#ededed;
+        }
+    }
+}
+
+    .sort{
+        margin-left:auto;
+        margin-right: 2%;
+    }
+
+    button{
+        cursor:pointer;
+    }
+
+    p{
+        font-size: 1.1em;
+    }
+

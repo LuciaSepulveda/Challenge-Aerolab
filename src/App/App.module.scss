@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,500");
+
+.container {
+  width: 100%;
+  background-color: #f9f9f9;
+
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 900;
+      background: url(../assets/header-x1.png);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-position: center;
+      background-size: cover;
+      color: transparent;
+      font-size: 100px;
+      text-align: center;
+}
+
+      button{
+      background-color:var(--primary);
+      border-radius: 10px;
+      height:50px;
+      width:100px;
+      color:white;
+      border:none;
+      transition:1s;
+
+      &:hover{
+        background-color:rgb(100, 28, 0);
+        color:white;
+      }
+      }
+
+    .error{
+      color:red;
+    }
+}
+

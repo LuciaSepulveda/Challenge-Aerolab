@@ -1,0 +1,20 @@
+.container {
+    text-align:center;
+    margin:auto;
+    width:100%;
+
+    img{
+        width:4%;
+        animation: fly 2s infinite alternate ease-in-out;
+    }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(0) rotateX(0);
+  }
+
+  100% {
+    transform: translateY(-60px) rotate3d(3, 2, 1, 30deg);
+  }
+}
