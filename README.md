@@ -3,7 +3,7 @@
 # Aerolab challenge
 Se debe crear una tienda de productos basada en puntos.
 
-#Link de la aplicación
+# Link de la aplicación
 [Challenge](https://aerolabchallenge.web.app/)
 
 # API
