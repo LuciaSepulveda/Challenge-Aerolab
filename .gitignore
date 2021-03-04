@@ -1,8 +1,6 @@
 # api keys
 .env
 
-/build
-
 node_modules
 .DS_Store
 dist
