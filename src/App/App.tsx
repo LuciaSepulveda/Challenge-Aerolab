@@ -8,6 +8,8 @@ import History from "../pages/History/History"
 import Loading from "../pages/Loading/Loading"
 import Button from "../ui/Button/Button"
 import {Product} from "../components/Product"
+import {User} from "../types/user"
+import {Status} from "../types/status"
 
 import styles from "./App.module.scss"
 
@@ -19,19 +21,6 @@ const headers = {
   Accept: "application/json",
   Authorization: "Bearer " + token,
   "Content-Type": "application/json",
-}
-
-enum Status {
-  Init = "init",
-  Pending = "pending",
-  Ready = "ready",
-}
-
-interface User {
-  id: string
-  name: string
-  points: number
-  redeemHistory: string[]
 }
 
 const App: React.FC = () => {
@@ -88,7 +77,6 @@ const App: React.FC = () => {
       if (name === "history") {
         setHistory(result.data)
       }
-      // setStatus(Status.Ready)
     } catch (error) {
       setRequestError(error.message)
     }
@@ -157,9 +145,8 @@ const App: React.FC = () => {
     getData("user")
     setUpdatePoints(false)
   }
-  // eslint-disable-next-line no-empty
+
   if (status === Status.Pending) {
-    //fetchData()
     return <Loading />
   }
 
