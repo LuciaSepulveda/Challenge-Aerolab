@@ -10,18 +10,9 @@ import Button from "../ui/Button/Button"
 import {Product} from "../components/Product"
 import {User} from "../types/user"
 import {Status} from "../types/status"
+import {URL, headers} from "../api/api"
 
 import styles from "./App.module.scss"
-
-const token = process.env.REACT_APP_API_KEY
-
-const URL = "https://coding-challenge-api.aerolab.co/"
-
-const headers = {
-  Accept: "application/json",
-  Authorization: "Bearer " + token,
-  "Content-Type": "application/json",
-}
 
 const App: React.FC = () => {
   const [status, setStatus] = React.useState<Status>(Status.Init)
