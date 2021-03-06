@@ -47,7 +47,7 @@ const Products: React.FC<Props> = ({p, buy, points, orden}) => {
             styleButton = {
               backgroundColor: "transparent",
               color: "none",
-              width: "60%",
+              width: "13%",
               cursor: "pointer",
               borderRadius: "100%",
             }
