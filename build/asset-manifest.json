@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.21b70b77.chunk.css",
-    "main.js": "/static/js/main.2030c8f2.chunk.js",
-    "main.js.map": "/static/js/main.2030c8f2.chunk.js.map",
+    "main.css": "/static/css/main.e7a0d835.chunk.css",
+    "main.js": "/static/js/main.023491a3.chunk.js",
+    "main.js.map": "/static/js/main.023491a3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.48512844.js",
     "runtime-main.js.map": "/static/js/runtime-main.48512844.js.map",
     "static/js/2.311fb980.chunk.js": "/static/js/2.311fb980.chunk.js",
     "static/js/2.311fb980.chunk.js.map": "/static/js/2.311fb980.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.21b70b77.chunk.css.map": "/static/css/main.21b70b77.chunk.css.map",
+    "static/css/main.e7a0d835.chunk.css.map": "/static/css/main.e7a0d835.chunk.css.map",
     "static/js/2.311fb980.chunk.js.LICENSE.txt": "/static/js/2.311fb980.chunk.js.LICENSE.txt",
     "static/media/buy-white.3eddcc1e.svg": "/static/media/buy-white.3eddcc1e.svg",
     "static/media/coin.1fc21bda.svg": "/static/media/coin.1fc21bda.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.48512844.js",
     "static/js/2.311fb980.chunk.js",
-    "static/css/main.21b70b77.chunk.css",
-    "static/js/main.2030c8f2.chunk.js"
+    "static/css/main.e7a0d835.chunk.css",
+    "static/js/main.023491a3.chunk.js"
   ]
 }
