@@ -14,7 +14,7 @@ import {
 
 import buyImage from "../../assets/icons/buy-white.svg"
 import coin from "../../assets/icons/coin.svg"
-import {Product} from "../Product"
+import {Product} from "../../types/Product"
 import {viewStatus} from "../../context/hooks"
 
 interface Props {

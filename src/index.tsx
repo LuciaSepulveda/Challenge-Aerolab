@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import "./index.css"
 import {ChakraProvider, extendTheme} from "@chakra-ui/react"
 import {createBreakpoints} from "@chakra-ui/theme-tools"
+
 import {Provider as UserProvider} from "./context/context"
 import App from "./App/App"
 

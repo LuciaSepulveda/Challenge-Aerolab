@@ -1,7 +1,7 @@
 import * as React from "react"
 import {Box, SimpleGrid, Spinner, Center, Divider} from "@chakra-ui/react"
 
-import {Product} from "../Product"
+import {Product} from "../../types/Product"
 import ProductContainer from "../ProductContainer/ProductContainer"
 import {usePoints, products, viewStatusProducts, useRedeem} from "../../context/hooks"
 

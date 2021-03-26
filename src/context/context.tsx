@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 
 import Loading from "../pages/Loading/Loading"
-import {Product} from "../components/Product"
+import {Product} from "../types/Product"
 import {User} from "../types/user"
 import {Status} from "../types/status"
 import {URL, headers} from "../api/api"

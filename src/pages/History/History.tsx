@@ -1,5 +1,6 @@
 import * as React from "react"
 import {Button, Box, Text, Table, Tr, Th, Td, Img} from "@chakra-ui/react"
+
 import {history} from "../../context/hooks"
 
 interface Props {

@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Box, Img} from "@chakra-ui/react"
+import {Img} from "@chakra-ui/react"
 import {motion} from "framer-motion"
 
 import logo from "../../assets/logo.svg"
