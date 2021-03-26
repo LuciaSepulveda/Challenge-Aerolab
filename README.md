@@ -1,27 +1,35 @@
-![Aerolab](./src/assets/logo.svg "Aerolab")
+![BlackBox Vision](./src/assets/logo.png "BlackBox Vision")
 
-# Aerolab challenge
-Se debe crear una tienda de productos basada en puntos.
+# Demo
+[QuixBox Vision](https://quizbox-vision.web.app/)
 
-# Link de la aplicación
-[Challenge](https://aerolabchallenge.web.app/)
+# QuizBox Vision
 
-# API
-Podés encontrar la documentación [acá](https://aerolabchallenge.docs.apiary.io/) y podés obtener una API key [acá](https://aerolab.co/coding-challenge)
+QuizBox Vision es un juego de preguntas y respuestas, como tantos otros. Sin embargo, en este juego, se ponen muchas más cosas en juego!! Bueno, en realidad no, pero quedaba bien para el resúmen.
 
 ## Definición funcional
-El usuario tiene una cantidad definida de puntos y cada producto vale una cantidad de puntos especifica.
+El juego consiste en 10 preguntas las cuales pueden ser verdadero/falso o multiple choice.
 
-* Cada producto debe tener un precio en puntos de manera visible.
-* El usuario debería poder filtrar los productos por precio, de mayor a menor y vicecersa.
-* El usuario debería poder ver cuantos puntos tienen en su cuenta.
-* Debería haber una manera clara para el usuario de ver que productos puede comprar y cuales no.
-* El botón de comprar debería estar disponible en los productos que el usuario tiene suficientes puntos para comprar.
-* Un botón de "comprar ahora" debería mostrarse cuando el usuario interactúa con un producto que puede comprar.
-* Cuando el usuario no puede comprar un producto, debería ver cuantos puntos le faltan para poder comprarlo.
-* Un usuario no debería poder comprar un producto del cual no tiene suficientes puntos para comprar.
-* Cuando el usuario compra, la cantidad de puntos debe ser deducida automaticamente de los puntos disponibles.
+Por cada pregunta, es necesario mostrar los siguientes campos:
+* Pregunta
+* Categoría
+* Dificultad
+* Posibles respuestas
+
+Al seleccionar la respuesta, muestra si la misma fue correcta o no. No es necesario mostrar cuál era la respuesta correcta.
+
+Al finalizar el juego, se muestra el puntaje obtenido. El mismo se calcula de la
+siguiente manera:
+* Respuesta correcta (verdadero/falso): *5 puntos*
+* Respuesta correcta (multiple choice): *10 puntos*
+* Respuesta incorrecta: *0 puntos*
 
 ## Definiciones técnicas
-* La aplicación debe estar publicada y debe ser accesible mediante un link.
-* El código de la aplicación debe estar subida a un repositorio de público acceso.
+* Todos los datos necesarios para el juego, están en [la siguiente API](https://opentdb.com/api.php?amount=10)
+* El juego puede realizarse en React web o React Native.
+* Cada pregunta debe presentarse en una pantalla distinta de la aplicación.
+
+## Extras
+* Se agregó la opción de elegir la categoria entre 6 categorias random.
+* En caso de seleccionar una opción incorrecta se muestra cuál era la correcta.
+* Hay 30 segundos para responder cada pregunta, si no se selecciona una opción la pregunta se cuenta como incorrecta y se pasa a la siguiente.

@@ -1,21 +1,22 @@
 import * as React from "react"
+import {Box, SimpleGrid, Spinner, Center, Divider} from "@chakra-ui/react"
 
 import {Product} from "../Product"
 import ProductContainer from "../ProductContainer/ProductContainer"
-
-import styles from "./Products.module.scss"
+import {usePoints, products, viewStatusProducts, useRedeem} from "../../context/hooks"
 
 interface Props {
-  p: Product[]
-  buy: (id: string) => void
-  points: number
   orden: string
 }
 
-const Products: React.FC<Props> = ({p, buy, points, orden}) => {
+const Products: React.FC<Props> = ({orden}) => {
   let cost = ""
   let disabled = false
-  let styleButton = {}
+
+  const [points, addPoints] = usePoints()
+  const p = products()
+  const status = viewStatusProducts()
+  const redeem = useRedeem()
 
   const filter = (products: Product[], orden: string) => {
     switch (orden) {
@@ -28,7 +29,12 @@ const Products: React.FC<Props> = ({p, buy, points, orden}) => {
         break
       }
       case "default": {
-        return products.sort()
+        return products.sort((a, b) => {
+          if (a._id > b._id) return 1
+          if (b._id > a._id) return -1
+
+          return 0
+        })
         break
       }
       default: {
@@ -38,38 +44,49 @@ const Products: React.FC<Props> = ({p, buy, points, orden}) => {
   }
 
   return (
-    <div>
-      <div className={styles.container}>
-        {filter(p, orden).map((product) => {
-          if (product.cost <= points) {
-            cost = product.cost.toString()
-            disabled = false
-            styleButton = {
-              backgroundColor: "transparent",
-              color: "none",
-              width: "13%",
-              cursor: "pointer",
-              borderRadius: "100%",
+    <Box>
+      <Divider m="auto" mb={4} w={{sm: "90vw", xl: "70vw"}} />
+      {status && (
+        <SimpleGrid
+          columns={{sm: 1, md: 2, lg: 3, xl: 4}}
+          m="auto"
+          p={2}
+          spacing={6}
+          w={{sm: "90vw", xl: "70vw"}}
+        >
+          {filter(p, orden).map((product) => {
+            if (product.cost <= points) {
+              cost = product.cost.toString()
+              disabled = false
+            } else {
+              cost = "You need " + (product.cost - points).toString()
+              disabled = true
             }
-          } else {
-            cost = "You need " + (product.cost - points).toString()
-            disabled = true
-          }
 
-          return (
-            <div key={product._id + product.name + product.cost} className={styles.product}>
-              <ProductContainer
-                buy={buy}
-                cost={cost}
-                disabled={disabled}
-                product={product}
-                styleButton={styleButton}
-              />
-            </div>
-          )
-        })}
-      </div>
-    </div>
+            return (
+              <Box
+                key={product._id + product.name + product.cost}
+                alignItems="center"
+                boxShadow="sm"
+                color="white"
+                h="300px"
+                m="auto"
+                maxHeight="300px"
+                maxWidth="300px"
+                w="100%"
+              >
+                <ProductContainer buy={redeem} cost={cost} disabled={disabled} product={product} />
+              </Box>
+            )
+          })}
+        </SimpleGrid>
+      )}
+      {!status && (
+        <Center bg="white" h="100%" w="100%">
+          <Spinner color="primary" />
+        </Center>
+      )}
+    </Box>
   )
 }
 

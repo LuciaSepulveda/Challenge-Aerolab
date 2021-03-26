@@ -1,14 +1,17 @@
 import * as React from "react"
+import {Box, Img} from "@chakra-ui/react"
+import {motion} from "framer-motion"
 
 import logo from "../../assets/logo.svg"
 
-import styles from "./Loading.module.scss"
-
 const Loading: React.FC = () => {
   return (
-    <div className={styles.container}>
-      <img src={logo} />
-    </div>
+    <motion.div
+      animate={{translateY: ["0px", "-60px", "0px"], rotateX: [0, 30, 0]}}
+      transition={{duration: 2, ease: "easeInOut", loop: Infinity}}
+    >
+      <Img src={logo} />
+    </motion.div>
   )
 }
 

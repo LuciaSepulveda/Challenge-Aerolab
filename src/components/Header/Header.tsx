@@ -1,129 +1,120 @@
-import {createStyles} from "@material-ui/core"
-import MenuItem from "@material-ui/core/MenuItem"
-import {makeStyles, Theme} from "@material-ui/core/styles"
 import * as React from "react"
+import {
+  Button,
+  Flex,
+  Spacer,
+  Img,
+  Text,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Spinner,
+} from "@chakra-ui/react"
 
 import coin from "../../assets/icons/coin.svg"
 import logo from "../../assets/logo.svg"
-import ButtonDropdown from "../../ui/ButtonDropdown/ButtonDropdown"
-import {Product} from "../Product"
-
-import styles from "./Header.module.scss"
+import header from "../../assets/header.png"
+import {usePoints, useUser, viewStatus} from "../../context/hooks"
 
 interface Props {
-  points: number
-  user: string
-  addPoints: (p: number) => void
-  history: Product[]
   redeem: () => void
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-    paper: {
-      marginRight: theme.spacing(2),
-    },
-  }),
-)
-
-const Header: React.FC<Props> = ({points, user, addPoints, history, redeem}) => {
-  const classes = useStyles()
-  const [open, setOpen] = React.useState<boolean>(false)
-  const anchorRef = React.useRef<HTMLButtonElement>(null)
-  const [openSecondButton, setOpenSecondButton] = React.useState<boolean>(false)
-  const anchorRefSecondButton = React.useRef<HTMLButtonElement>(null)
-
-  const handleClose = (event: React.MouseEvent<EventTarget>) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-      return
-    }
-    setOpen(false)
-  }
-
-  const prevOpen = React.useRef(open)
-
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus()
-    }
-    prevOpen.current = open
-  }, [open])
-
-  const handleCloseSecondButton = (event: React.MouseEvent<EventTarget>) => {
-    if (
-      anchorRefSecondButton.current &&
-      anchorRefSecondButton.current.contains(event.target as HTMLElement)
-    ) {
-      return
-    }
-    setOpenSecondButton(false)
-  }
-
-  const prevOpenSecondButton = React.useRef(openSecondButton)
-
-  React.useEffect(() => {
-    if (prevOpenSecondButton.current === true && openSecondButton === false) {
-      anchorRefSecondButton.current!.focus()
-    }
-    prevOpenSecondButton.current = openSecondButton
-  }, [openSecondButton])
+const Header: React.FC<Props> = ({redeem}) => {
+  const [points, addPoints] = usePoints()
+  const user = useUser()
+  const status = viewStatus()
 
   return (
-    <div className={styles.container}>
-      <div className={styles.userData}>
-        <img className={styles.logo} src={logo} />
-        <div className={styles.name}>
-          <ButtonDropdown name={user} styles={{backgroundColor: "var(--primary)", color: ""}}>
+    <>
+      <Flex direction="row" m="auto" minHeight="80px" w="85vw" bg="white">
+        <Img marginLeft="20px" src={logo} />
+        <Spacer />
+        <Menu>
+          <MenuButton
+            as={Button}
+            bg="transparent"
+            borderRadius="0"
+            m="auto"
+            marginRight="20px"
+            textAlign="left"
+          >
+            {user.name}
+          </MenuButton>
+          <MenuList>
             <MenuItem
               onClick={() => {
-                redeem(), handleClose
+                redeem()
               }}
             >
               Redeem history
             </MenuItem>
-          </ButtonDropdown>
-        </div>
-        <div className={styles.points}>
-          <ButtonDropdown
-            name={points}
-            styles={{
-              backgroundColor: "#ededed",
-              color: "black",
-            }}
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuButton
+            as={Button}
+            bg="#ededed"
+            borderRadius="100px"
+            m="auto"
+            marginRight="20px"
+            p={2}
           >
+            <Flex direction="row">
+              <Img align="left" src={coin} />
+              {status === "ready" && (
+                <Text m="auto" mt="6px">
+                  {user.points}
+                </Text>
+              )}
+              {status === "pending" && <Spinner m="auto" p={1} />}
+            </Flex>
+          </MenuButton>
+          <MenuList>
             <MenuItem
               onClick={() => {
-                addPoints(1000), handleCloseSecondButton
+                addPoints(1000)
               }}
             >
-              Add 1000 <img alt="coin" className={styles.coin} src={coin} />
+              <Img src={coin} />
+              <span>Add 1000</span>
             </MenuItem>
             <MenuItem
               onClick={() => {
-                addPoints(5000), handleCloseSecondButton
+                addPoints(5000)
               }}
             >
-              Add 5000
-              <img alt="coin" className={styles.coin} src={coin} />
+              <Img src={coin} />
+              <span>Add 5000</span>
             </MenuItem>
             <MenuItem
               onClick={() => {
-                addPoints(7500), handleCloseSecondButton
+                addPoints(7500)
               }}
             >
-              Add 7500
-              <img alt="coin" className={styles.coin} src={coin} />
+              <Img src={coin} />
+              <span>Add 7500</span>
             </MenuItem>
-          </ButtonDropdown>
-        </div>
-      </div>
-      <div className={styles.cover}>
-        <h2>Electronics</h2>
-      </div>
-    </div>
+          </MenuList>
+        </Menu>
+      </Flex>
+      <Flex
+        alignItems="flex-end"
+        backgroundImage={`url(${header})`}
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+        justifyContent="flex-start"
+        m="auto"
+        marginTop="0"
+        minHeight={64}
+        w="100%"
+      >
+        <Text color="white" fontSize="64px" fontWeight="bold" mb={4} ml={6}>
+          Electronics
+        </Text>
+      </Flex>
+    </>
   )
 }
 
