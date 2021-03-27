@@ -14,7 +14,7 @@ const actions = {
     path: `{{destinationpath}}/{{pascalCase name}}/{{pascalCase name}}.module.scss`,
     templateFile: `plop/styles.scss.hbs`,
   },
-}
+};
 
 module.exports = function (plop) {
   plop.setGenerator("component", {
@@ -33,5 +33,5 @@ module.exports = function (plop) {
       },
     ],
     actions: [actions.component, actions.index, actions.styles],
-  })
-}
+  });
+};

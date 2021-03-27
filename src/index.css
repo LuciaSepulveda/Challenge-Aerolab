@@ -1,6 +1,8 @@
 :root {
-  --primary: #44D1B3;
-  --red: #E94F4E;
+  --primary: #44d1b3;
+  --secondary: #556bf4;
+  --red: #e94f4e;
+  --fondo: #6476e0;
 }
 
 body {
@@ -14,7 +16,9 @@ body {
 
 #root {
   text-align: center;
-  background-color: white;
+  /*background-color: #bab7d0;*/
+  /*background-color: #d7d3e1;*/
+  background-color: #f9f9f9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

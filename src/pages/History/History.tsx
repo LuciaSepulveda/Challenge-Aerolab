@@ -1,49 +1,129 @@
 import * as React from "react"
+import {Button, Box, Text, Table, Tr, Th, Td, Img} from "@chakra-ui/react"
 
-import {Product} from "../../components/Product"
-import Button from "../../ui/Button/Button"
-
-import styles from "./History.module.scss"
+import {history} from "../../context/hooks"
 
 interface Props {
-  history: Product[]
   back: () => void
 }
 
-const History: React.FC<Props> = ({history, back}) => {
+const History: React.FC<Props> = ({back}) => {
+  const [showLastTen, setShowLastTen] = React.useState<boolean>(true)
+  const [text, setText] = React.useState<string>("Last ten items")
   let i = 0
+  const lastTen = []
+  const historyRedeem = history()
+
+  for (let j = historyRedeem.length - 10; j !== historyRedeem.length; j++) {
+    lastTen.push(historyRedeem[j])
+  }
+
+  const showTen = () => {
+    setShowLastTen(true)
+    setText("Last ten items")
+  }
+
+  const showAll = () => {
+    setShowLastTen(false)
+    setText("All items")
+  }
 
   return (
-    <div className={styles.container}>
-      <h1>Redeem history</h1>
-      <Button onClick={back}>Back</Button>
-      <table className={styles.info}>
-        <tr>
-          <th />
-          <th className={styles.category}>Category</th>
-          <th className={styles.name}>Name</th>
-          <th className={styles.cost}>Cost</th>
-        </tr>
-        {history.map((product) => {
-          return (
-            <tr key={i++}>
-              <td>
-                <img src={product.img.url} />
-              </td>
-              <td>
-                <div>{product.category}</div>
-              </td>
-              <td>
-                <div>{product.name}</div>
-              </td>
-              <td>
-                <div>{product.cost}</div>
-              </td>
-            </tr>
-          )
-        })}
-      </table>
-    </div>
+    <Box m="auto" w="80%">
+      <Text as="h1" fontSize="5xl" m="10px">
+        {text}
+      </Text>
+      <Button
+        _hover={{bg: "primary", color: "white"}}
+        bg="#ededed"
+        borderRadius="100px"
+        m="10px"
+        transition="0.5s"
+        onClick={back}
+      >
+        Back
+      </Button>
+      {!showLastTen && (
+        <>
+          <Button
+            _hover={{bg: "primary", color: "white"}}
+            bg="#ededed"
+            borderRadius="100px"
+            m="10px"
+            transition="0.5s"
+            onClick={showTen}
+          >
+            Last ten items
+          </Button>
+          <Table m="auto" w={{lg: "70%"}}>
+            <Tr>
+              <Th />
+              <Th>Category</Th>
+              <Th>Name</Th>
+              <Th>Cost</Th>
+            </Tr>
+            {historyRedeem.map((product) => {
+              return (
+                <Tr key={i++}>
+                  <Td>
+                    <Img src={product.img.url} />
+                  </Td>
+                  <Td>
+                    <Text>{product.category}</Text>
+                  </Td>
+                  <Td>
+                    <Text>{product.name}</Text>
+                  </Td>
+                  <Td>
+                    <Text>{product.cost}</Text>
+                  </Td>
+                </Tr>
+              )
+            })}
+          </Table>
+        </>
+      )}
+      {showLastTen && (
+        <>
+          <Button
+            _hover={{bg: "primary", color: "white"}}
+            bg="#ededed"
+            borderRadius="100px"
+            m="10px"
+            transition="0.5s"
+            onClick={showAll}
+          >
+            All items
+          </Button>
+          <Table m="auto" w={{lg: "70%"}}>
+            <Tr>
+              <Th />
+              <Th>Category</Th>
+              <Th>Name</Th>
+              <Th>Cost</Th>
+            </Tr>
+            {lastTen.map((product) => {
+              return (
+                <Tr key={i++}>
+                  <Td>
+                    <Img src={product?.img.url} />
+                  </Td>
+                  <Td>
+                    <Text>{product?.category}</Text>
+                  </Td>
+                  <Td>
+                    <Text>{product?.name}</Text>
+                  </Td>
+                  <Td>
+                    <Text>{product?.cost}</Text>
+                  </Td>
+                </Tr>
+              )
+            })}
+          </Table>
+        </>
+      )}
+    </Box>
   )
 }
 
