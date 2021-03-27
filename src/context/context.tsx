@@ -66,7 +66,10 @@ const UserProvider: React.FC = ({children}) => {
   }, [])
 
   React.useEffect(() => {
-    if (status === Status.Pending) getData("user")
+    if (status === Status.Pending) {
+      getData("user")
+      getData("history")
+    }
   })
 
   async function handleRedeem(id: string) {
