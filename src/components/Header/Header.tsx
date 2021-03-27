@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({redeem}) => {
 
   return (
     <>
-      <Flex direction="row" m="auto" minHeight="80px" w="85vw" bg="white">
+      <Flex direction="row" m="auto" minHeight="80px" w="90vw" bg="white">
         <Img marginLeft="20px" src={logo} />
         <Spacer />
         <Menu>
