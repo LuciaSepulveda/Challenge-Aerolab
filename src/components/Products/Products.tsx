@@ -44,8 +44,8 @@ const Products: React.FC<Props> = ({orden}) => {
   }
 
   return (
-    <Box>
-      <Divider m="auto" mb={4} w={{sm: "90vw", xl: "70vw"}} />
+    <Box m="auto">
+      <Divider m="auto" mb={4} w={{sm: "60vw", xl: "70vw"}} />
       {status && (
         <SimpleGrid
           columns={{sm: 1, md: 2, lg: 3, xl: 4}}

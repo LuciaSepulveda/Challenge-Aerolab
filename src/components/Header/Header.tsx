@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({redeem}) => {
 
   return (
     <>
-      <Flex direction="row" m="auto" minHeight="80px" w="90vw" bg="white">
+      <Flex bg="white" direction="row" m="auto" minHeight="80px" w={["90%", "90%", "90%", "90%"]}>
         <Img marginLeft="20px" src={logo} />
         <Spacer />
         <Menu>
@@ -108,9 +108,9 @@ const Header: React.FC<Props> = ({redeem}) => {
         m="auto"
         marginTop="0"
         minHeight={64}
-        w="100%"
+        w={["100vw", "90%", "90%", "90%"]}
       >
-        <Text color="white" fontSize="64px" fontWeight="bold" mb={4} ml={6}>
+        <Text color="white" fontSize={["50px", "64px"]} fontWeight="bold" mb={4} ml={["4", "6"]}>
           Electronics
         </Text>
       </Flex>

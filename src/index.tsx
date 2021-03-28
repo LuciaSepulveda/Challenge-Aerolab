@@ -19,10 +19,10 @@ const colors = {
 }
 
 const breakPoints = createBreakpoints({
-  sm: "30em",
-  md: "48em",
-  lg: "62em",
-  xl: "80em",
+  sm: "300px",
+  md: "468px",
+  lg: "960px",
+  xl: "1200px",
 })
 
 const theme = extendTheme({colors, breakPoints})

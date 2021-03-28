@@ -41,7 +41,7 @@ const App: React.FC = () => {
 
   if (status === Status.Ready && (statusProducts === true || newStatus === "ready")) {
     return (
-      <Box>
+      <Box w={["100vw", "100%"]} bg="var(--fondo)">
         <Header redeem={redeemHistory} />
         <Filter filterSet={filterSet} />
         <Products orden={filter} />
@@ -50,7 +50,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <Box w="100%">
+    <Box>
       <Text
         background={`url(${header})`}
         backgroundClip="text"
@@ -58,7 +58,7 @@ const App: React.FC = () => {
         backgroundSize="100% auto"
         backgroundStyle="cover"
         color="transparent"
-        fontSize="100px"
+        fontSize={["50px", "100px"]}
         fontWeight="900"
         m="auto"
       >
