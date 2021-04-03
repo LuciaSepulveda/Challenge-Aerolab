@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Box, SimpleGrid, Spinner, Center, Divider} from "@chakra-ui/react"
+import {Box, Spinner, Center, Divider, Grid} from "@chakra-ui/react"
 
 import {Product} from "../../types/Product"
 import ProductContainer from "../ProductContainer/ProductContainer"
@@ -47,12 +47,12 @@ const Products: React.FC<Props> = ({orden}) => {
     <Box m="auto">
       <Divider m="auto" mb={4} w={{sm: "60vw", xl: "70vw"}} />
       {status && (
-        <SimpleGrid
-          columns={{sm: 1, md: 2, lg: 3, xl: 4}}
+        <Grid
+          gap={6}
           m="auto"
           p={2}
-          spacing={6}
-          w={{sm: "90vw", xl: "70vw"}}
+          templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+          w={["100vw", "70vw"]}
         >
           {filter(p, orden).map((product) => {
             if (product.cost <= points) {
@@ -71,7 +71,6 @@ const Products: React.FC<Props> = ({orden}) => {
                 color="white"
                 h="300px"
                 m="auto"
-                maxHeight="300px"
                 maxWidth="300px"
                 w="100%"
               >
@@ -79,7 +78,7 @@ const Products: React.FC<Props> = ({orden}) => {
               </Box>
             )
           })}
-        </SimpleGrid>
+        </Grid>
       )}
       {!status && (
         <Center bg="white" h="100%" w="100%">
