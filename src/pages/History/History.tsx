@@ -1,6 +1,6 @@
 import * as React from "react"
 import {Button, Box, Text, Table, Tr, Th, Td, Img, Thead} from "@chakra-ui/react"
-
+import Footer from "../../components/Footer/Footer"
 import {history} from "../../context/hooks"
 
 interface Props {
@@ -147,6 +147,7 @@ const History: React.FC<Props> = ({back}) => {
           </Table>
         </>
       )}
+      <Footer />
     </Box>
   )
 }

@@ -3,6 +3,7 @@ import {Box, Button, Text} from "@chakra-ui/react"
 
 import Filter from "../components/Filter/Filter"
 import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 import Products from "../components/Products/Products"
 import History from "../pages/History/History"
 import {Status} from "../types/status"
@@ -41,10 +42,11 @@ const App: React.FC = () => {
 
   if (status === Status.Ready && (statusProducts === true || newStatus === "ready")) {
     return (
-      <Box w={["100vw", "100%"]} bg="var(--fondo)">
+      <Box bg="var(--fondo)" w={["100vw", "100%"]}>
         <Header redeem={redeemHistory} />
         <Filter filterSet={filterSet} />
         <Products orden={filter} />
+        <Footer />
       </Box>
     )
   }
